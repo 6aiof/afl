@@ -1,0 +1,17 @@
+<div>
+    <div *ngIf = "team">
+        <h1>Prediction of Next Round</h1>
+    <table style ="text-align: center;"> 
+
+        <tr><th>Tip</th><th>Confidence</th><th>Away Team</th></tr>
+
+        <tr *ngFor="let tip of tips">
+
+            <td>{{tip.tip}}</td>
+            <td>{{tip.confidence}}</td>
+            <td>{{tip.ateam}}</td>
+        </tr>
+
+    </table>
+    </div>
+</div>

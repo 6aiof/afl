@@ -1,0 +1,16 @@
+table {
+	width:100%;
+	background-color:#ADBAC2;}
+
+
+table, td, th {
+
+	text-align: center;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+}
+*{
+	text-align: center;
+	font-size: 25px;
+}

@@ -1,0 +1,15 @@
+<div>
+    <div *ngIf = "team">
+        <h2>Venues where my team won</h2>
+    <table style ="text-align: center;">
+
+        <tr><th>Venues:</th></tr>
+
+        <tr *ngFor="let game of games">
+
+            <td>{{game.venue}}</td>
+            
+
+    </table>
+    </div>
+</div>

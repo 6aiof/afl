@@ -1,0 +1,19 @@
+<div>
+    <div *ngIf = "team">
+        <h1>Next 5 Games</h1>
+    <table style ="text-align: center;"> 
+
+        <tr><th>Home Team</th><th>Away Team</th><th>Venue</th><th>Date</th><th>Round</th></tr>
+
+        <tr *ngFor="let game of games">
+
+            <td>{{game.hteam}}</td>
+            <td>{{game.ateam}}</td>
+            <td>{{game.venue}}</td>
+            <td>{{game.date}}</td>
+            <td>{{game.round}}</td>
+        </tr>
+
+    </table>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<button class="date" type="button" onclick="document.getElementById('demo').innerHTML = Date()">
+    Display Date and Time.</button>
+<div id="ParentDiv">
+
+    <p id="demo"></p>
+
+    <h2>My Teams</h2>
+    <div class="points">
+        <ul>
+            <li class="items" *ngFor="let team of teams" (click)="onSelect(team)">
+                <span>{{team.id}}</span> {{team.name}}
+            </li>
+        </ul>
+    </div>
+
+    <div *ngIf="selectedTeam" class=group>
+        <nav id=nav1>
+            <button (click)="changeActiveComponent('winGames')" class="navButton">Team Winnings</button>
+            <button (click)="changeActiveComponent('myGames')" class="navButton">Team Games</button>
+            <button (click)="changeActiveComponent('winVenues')" class="navButton">Venues</button>
+            <button (click)="changeActiveComponent('nextDetails')" class="navButton">Next 5 Games</button>
+            <button (click)="changeActiveComponent('tipTeams')" class="navButton">Predictions</button>
+            <button (click)="changeActiveComponent('headToHead')" class="navButton">Head-To-Head</button>
+            <button (click)="changeActiveComponent('lostGames')" class="navButton">Team Losses</button>
+
+        </nav>
+    </div>
+
+
+
+    <div *ngIf="selectedTeam">
+        <app-team-info [team]="selectedTeam"></app-team-info>
+
+        <app-my-games *ngIf="activeComponent === 'myGames'" [team]="selectedTeam"></app-my-games>
+        <app-lost-games *ngIf="activeComponent === 'lostGames'" [team]="selectedTeam"></app-lost-games>
+        <app-win-games *ngIf="activeComponent === 'winGames'" [team]="selectedTeam"></app-win-games>
+        <app-tip-teams *ngIf="activeComponent === 'tipTeams'" [team]="selectedTeam"></app-tip-teams>
+        <app-next-details *ngIf="activeComponent === 'nextDetails'" [team]="selectedTeam"></app-next-details>
+        <app-win-venues *ngIf="activeComponent === 'winVenues'" [team]="selectedTeam"></app-win-venues>
+        <app-head-to-head *ngIf="activeComponent === 'headToHead'" [team]="selectedTeam"></app-head-to-head>
+    </div>
+</div>

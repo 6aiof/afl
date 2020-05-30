@@ -1,0 +1,23 @@
+<div *ngIf="team">
+    <h1>Head To Head Games</h1>
+    <table style="text-align: center;">
+
+       
+        <tr>
+            <th>My Team</th><th class="blank"colspan="3"></th><th>My Team's Rival</th>
+        </tr>
+
+        <tr class="all" *ngFor="let game of games">
+
+           
+            <td><p>TEAM:{{game.hteam}}</p><br><p>SCORE: {{game.hscore}}</p></td>
+            <td class="blank"colspan="3"> VS</td>
+            <td><p>TEAM:{{game.ateam}}</p><br><p>SCORE: {{game.ascore}}</td>
+            
+            <div><td *ngFor="let team of teams">{{team.logo}}</td></div>
+
+
+
+    </table>
+</div>
+
