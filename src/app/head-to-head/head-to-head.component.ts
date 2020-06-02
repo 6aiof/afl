@@ -1,10 +1,11 @@
-import { Component, OnInit,Input,SimpleChanges } from '@angular/core';
-import { DataServiceService } from '../data-service.service';
-import  { Game } from '../game';
-import  { Team } from '../team';
-import { LiteralMapEntry } from '@angular/compiler/src/output/output_ast';
+import { Component, OnInit , Input, OnChanges, SimpleChanges } from '@angular/core';
+import {observable} from 'rxjs';
+import{DataServiceService} from '../data-service.service';
+import {Team} from '../team';
 import { element } from 'protractor';
-import { TemplateParseResult } from '@angular/compiler';
+import { Game } from '../game';
+
+
 
 @Component({
   selector: 'app-head-to-head',
@@ -13,35 +14,61 @@ import { TemplateParseResult } from '@angular/compiler';
 })
 export class HeadToHeadComponent implements OnInit {
 
-  games: Game[];
-  teams: Team[];
+  rivalTeam: Team;
+  games:Game[];
+  teams:Team[];
   @Input() team: Team;
 
   constructor(private dataService: DataServiceService) { }
 
-  ngOnChanges(changes: SimpleChanges){
-    if(changes['team']){
-      this.getHeadToHead();
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['team']) {
+        console.log(changes['team'].currentValue);
+       
+        if(this.team) this.getTeams();
     }
   }
 
-  ngOnInit(): void {
-    this.getHeadToHead
+  ngOnInit() {
+    if(this.team) this.getTeams();
+    //this.getGames();
   }
-  
 
-  getHeadToHead(): void{
-    this.dataService.getGames().subscribe(temp => {
-      var temArr = [];
-      temp.forEach(element => {
-        if(element.winnerteamid == this.team.id  
-               && element.round <= 19
-               && element.complete==100) {
-          temArr.push(element);
-        } 
-      });
-      this.games = temArr;
+  onSelect(teamID: number):void {
+    
+    this.rivalTeam = this.teams.find(element => element.id == teamID);
+    this.getGames();
+  }
+
+  getGames(): void {
+    
+
+  this.dataService.getGames().subscribe(temp => {
+    var tempArr = [];
+    temp.forEach(element => {
+      if(((element.hteamid == this.team.id && element.ateamid == this.rivalTeam.id) || (element.ateamid == this.team.id && element.hteamid == this.rivalTeam.id)) && element.round <=19) {
+        tempArr.push(element);
+      }
     });
-  }
+    this.games = tempArr;
+  });
+}
 
+  getTeams(): void {
+    this.dataService.getTeams().subscribe(temp => {
+
+    
+      var temArr =[];
+
+      temp.forEach(element => {
+        if(element.id != this.team.id){
+          temArr.push(element);
+        }
+      });
+
+this.teams = temArr;
+    });
+
+}
+ 
 }

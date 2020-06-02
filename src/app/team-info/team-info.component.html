@@ -6,20 +6,12 @@
         <tr><th>Logo</th><th>Name</th><th>Abbrev</th></tr>
 
         <tr *ngFor="let team of teams">
-
-            
+  
             <td><img src="https://squiggle.com.au/{{team.logo}}"></td>
             <td>{{team.name}}</td>
             <td>{{team.abbrev}}</td>
         </tr>
 
     </table>
-
-    
-   <!-- <app-my-games [team]="selectedTeam"></app-my-games>
-    <app-win-games [team]="selectedTeam"></app-win-games>
-    <app-tip-teams [team]="selectedTeam"></app-tip-teams>
-    <app-next-details [team]="selectedTeam"></app-next-details>
-    <app-win-venues [team]="selectedTeam"></app-win-venues>-->
     </div>
 </div>

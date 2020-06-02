@@ -13,9 +13,9 @@
         </ul>
     </div>
 
-    <div *ngIf="selectedTeam" class=group>
-        <nav id=nav1>
-            <button (click)="changeActiveComponent('winGames')" class="navButton">Team Winnings</button>
+    <div *ngIf="selectedTeam" class="group">
+        <!--<nav id=nav1>-->
+            <button (click)="changeActiveComponent('winGames')" class="navButton" >Team Winnings</button>
             <button (click)="changeActiveComponent('myGames')" class="navButton">Team Games</button>
             <button (click)="changeActiveComponent('winVenues')" class="navButton">Venues</button>
             <button (click)="changeActiveComponent('nextDetails')" class="navButton">Next 5 Games</button>
@@ -23,7 +23,7 @@
             <button (click)="changeActiveComponent('headToHead')" class="navButton">Head-To-Head</button>
             <button (click)="changeActiveComponent('lostGames')" class="navButton">Team Losses</button>
 
-        </nav>
+        <!--</nav>-->
     </div>
 
 

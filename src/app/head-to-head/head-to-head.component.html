@@ -1,23 +1,34 @@
-<div *ngIf="team">
-    <h1>Head To Head Games</h1>
-    <table style="text-align: center;">
+<!--Results for all games my team played this season-->
+<div>
+    <div *ngIf = "team">
+    
+<h1>Select Oponent Team</h1>
+<select #mySelect (change) = "onSelect(mySelect.value)">
+    <option *ngFor="let team of teams" [value]="team.id">
+        {{team.name}}
+    </option>
+</select>
+<!----
+<li class="items" *ngFor="let team of teams" (click)="onSelect(team)">
+        
+    <span>{{team.id}}</span> {{team.name}}
 
-       
-        <tr>
-            <th>My Team</th><th class="blank"colspan="3"></th><th>My Team's Rival</th>
+</li>
+-->
+
+
+<table *ngIf="rivalTeam" style ="text-align: center;"> 
+        <tr><th>Home Team</th><th>Away Team</th><th>Score</th><th>Winner</th></tr>
+
+        <tr *ngFor="let game of games">
+
+            <td>{{game.hteam}}</td>
+            <td>{{game.ateam}}</td>
+            <td>{{game.hscore}}-{{game.ascore}}</td>
+            <td>{{game.winner}}</td>
         </tr>
 
-        <tr class="all" *ngFor="let game of games">
-
-           
-            <td><p>TEAM:{{game.hteam}}</p><br><p>SCORE: {{game.hscore}}</p></td>
-            <td class="blank"colspan="3"> VS</td>
-            <td><p>TEAM:{{game.ateam}}</p><br><p>SCORE: {{game.ascore}}</td>
-            
-            <div><td *ngFor="let team of teams">{{team.logo}}</td></div>
-
-
-
     </table>
-</div>
+    </div>
 
+</div>

@@ -44,11 +44,8 @@ li:hover {
 	color:white;
 	
 }
-ul{
-
-}
 li.items {
-	font-size: 25px;
+	font-size: 20px;
 	margin: 0px;
 	
 	list-style: none;
@@ -59,4 +56,16 @@ li.items {
 	padding-left: 2.5em
 	/*https://lh3.googleusercontent.com/proxy/cepFWRJK8Coi0xHCoJsdig4Dw78Z4fv-EarNTRHTN4bnfP4rFzgx3ya2Q2NHD2vSXBMIv4_FjzU13p4o5Ne9QguauRIs_3s
 	https://clipartstation.com/wp-content/uploads/2017/11/afl-football-clipart.jpg*/
+}
+@media screen and (max-width: 1006px){
+	.navButton{
+	width:25%;  text-align:center; line-height:1.1em; padding:0
+	}
+	   
+}
+@media screen and (max-width: 533px){
+	.navButton{
+	width:50%;  text-align:center; line-height:1.1em; padding:0
+	}
+	   
 }
